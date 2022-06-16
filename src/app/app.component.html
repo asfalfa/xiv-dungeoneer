@@ -23,8 +23,13 @@
 
 <div class="content" role="main">
   
+  <div *ngFor="let minion of minions"> 
+   <h1>{{minion.name}}</h1>
+    <p><img  src="{{minion.image}}"  /></p>
+    <p>{{minion.id}}</p>
+    <p>{{minion.enhanced_description}}</p>
+   </div>
   
-  <img *ngFor="let minion of minions" src="{{minion.image}}"  />
 
 </div>
 
