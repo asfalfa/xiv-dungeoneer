@@ -24,7 +24,7 @@ export class HttpService {
       ]
     },
     {
-      id: 447,
+      id: 441,
       name: "Teacup Kapikulu",
       enhanced_description: "Summon your teacup Kapikulu minion. Small but eager to work.",
       patch: "6.1",
@@ -54,5 +54,9 @@ export class HttpService {
       ]
     }
   ]
+
+  getMinions(): Array<any> {
+    return this.minions;
+  }
 
 }
