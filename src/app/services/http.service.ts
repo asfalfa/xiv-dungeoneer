@@ -22,6 +22,36 @@ export class HttpService {
           related_type: 'Instance'
         }
       ]
+    },
+    {
+      id: 447,
+      name: "Teacup Kapikulu",
+      enhanced_description: "Summon your teacup Kapikulu minion. Small but eager to work.",
+      patch: "6.1",
+      image: "https://ffxivcollect.com/images/minions/large/447.png",
+      owned: 	"8.2%",
+      sources: [
+        {
+          type: "Dungeon",
+          text: "Alzadaal's Legacy",
+          related_type: 'Instance'
+        }
+      ]
+    },
+    {
+      id: 447,
+      name: "Wind-up Azeyma",
+      enhanced_description: "Summon your wind-up Azeyma minion. For those who like it scorching hot.",
+      patch: "6.1",
+      image: "https://ffxivcollect.com/images/minions/large/451.png",
+      owned: 	"20%",
+      sources: [
+        {
+          type: "Raid",
+          text: "Aglaia",
+          related_type: 'Instance'
+        }
+      ]
     }
   ]
 
