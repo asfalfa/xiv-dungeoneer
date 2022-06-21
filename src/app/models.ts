@@ -33,7 +33,8 @@ export interface DungeonDetails {
     Name: string;
     Banner: string;
 }
-
+// Minion characteristics 
+/* lslfjldf **/
 export interface Minion {
     id: number;
     name: string;
