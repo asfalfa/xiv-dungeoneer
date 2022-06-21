@@ -1,4 +1,5 @@
 export const environment = {
   production: true,
-  API: 'https://ffxivcollect.com/api/'
+  XIVAPI: 'https://xivapi.com',
+  COLLECTAPI: 'https://ffxivcollect.com/api'
 };

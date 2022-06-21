@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  API: 'https://ffxivcollect.com/api/',
+  XIVAPI: 'https://xivapi.com',
+  COLLECTAPI: 'https://ffxivcollect.com/api'
 };
 
 /*
