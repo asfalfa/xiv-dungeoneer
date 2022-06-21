@@ -1,62 +1,34 @@
 import { Injectable } from '@angular/core';
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { APIResponse, Dungeon, DungeonDetails, Minion, Mount, Orchestrion, XIVAPIResponse } from '../models';
+import { environment as env } from 'src/environments/environment';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class HttpService {
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
-  minions = [
-    {
-      id: 398,
-      name: "Wind-up Gaia",
-      enhanced_description: "Supposedly discovered by those investigating the Empty, its appearance there is both inexplicable and implausible. Considering all the other unlikely events that occurred there, however, perhaps the sudden materialization of a hammer-wielding mammet is not so unusual after all.",
-      patch: "5.4",
-      image: "https://ffxivcollect.com/images/minions/large/398.png",
-      owned: 	"59%",
-      sources: [
-        {
-          type: "Raid",
-          text: "Eden's Promise: Eternity",
-          related_type: 'Instance'
-        }
-      ]
-    },
-    {
-      id: 441,
-      name: "Teacup Kapikulu",
-      enhanced_description: "Summon your teacup Kapikulu minion. Small but eager to work.",
-      patch: "6.1",
-      image: "https://ffxivcollect.com/images/minions/large/447.png",
-      owned: 	"8.2%",
-      sources: [
-        {
-          type: "Dungeon",
-          text: "Alzadaal's Legacy",
-          related_type: 'Instance'
-        }
-      ]
-    },
-    {
-      id: 447,
-      name: "Wind-up Azeyma",
-      enhanced_description: "Summon your wind-up Azeyma minion. For those who like it scorching hot.",
-      patch: "6.1",
-      image: "https://ffxivcollect.com/images/minions/large/451.png",
-      owned: 	"20%",
-      sources: [
-        {
-          type: "Raid",
-          text: "Aglaia",
-          related_type: 'Instance'
-        }
-      ]
-    }
-  ]
+  getMinions(): Observable<APIResponse<Minion>> {
+    return this.http.get<APIResponse<Minion>>(`${env.COLLECTAPI}/minions`);
+  }
 
-  getMinions(): Array<any> {
-    return this.minions;
+  getMounts(): Observable<APIResponse<Mount>> {
+    return this.http.get<APIResponse<Mount>>(`${env.COLLECTAPI}/mounts`);
+  }
+
+  getOrchestrions(): Observable<APIResponse<Orchestrion>> {
+    return this.http.get<APIResponse<Orchestrion>>(`${env.COLLECTAPI}/orchestrions`);
+  }
+
+  getDungeons(): Observable<XIVAPIResponse<Dungeon>>{
+    return this.http.get<XIVAPIResponse<Dungeon>>(`${env.XIVAPI}/InstanceContent?limit=87`);
+  }
+
+  getDungeonsDetails(id: Number): Observable<DungeonDetails>{
+    return this.http.get<DungeonDetails>(`${env.XIVAPI}/InstanceContent/${id}`);
   }
 
 }
