@@ -16,11 +16,12 @@ export interface Pagination {
     ResultsTotal: number;
 }
 
+/** This is the end product */
 export interface MatchedItem {
-    dungeon: Dungeon;
-    orchestrions?: Array<Orchestrion>;
-    minions?: Array<Minion>;
-    mounts?: Array<Mount>;
+    dungeon: Dungeon; /** See Line 27 for details */
+    orchestrions?: Array<Orchestrion>; /** See Line 57 for details */
+    minions?: Array<Minion>; /** See Line 39 for details */
+    mounts?: Array<Mount>; /** See Line 72 for details */
 }
 
 export interface Dungeon {
