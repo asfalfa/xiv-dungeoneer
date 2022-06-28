@@ -81,3 +81,30 @@ export interface Mount {
     owned: string;
     sources: Array<Source>;
 }
+
+export interface Character {
+    ID: number;
+    Lang: string;
+    Avatar: string;
+    Name: string;
+    Server: string;
+}
+
+export interface CharacterInfo {
+    Character: CharacterDetails;
+    Minions: Array<Minion>;
+    Mounts: Array<Mount>;
+}
+
+interface CharacterDetails {
+    DC: string;
+    Server: string;
+    ID: number;
+    Name: string;
+    Avatar: string;
+    Portrait: string;
+    Gender: number;
+    Bio: string;
+    FreeCompanyId: string;
+    FreeCompanyName: string;
+}
