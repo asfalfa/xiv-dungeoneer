@@ -18,10 +18,6 @@ const routes: Routes = [
     path:'search/:search/:server',
     component: SearchComponent,
   },
-  {
-    path:'details/:id',
-    component: CharacterDetailsComponent,
-  },
   { 
     path: 'minions', 
     component: MinionsComponent 
