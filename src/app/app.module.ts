@@ -16,6 +16,9 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { HomeComponent } from './components/home/home.component';
 import { SearchComponent } from './components/search/search.component';
 import { CharacterDetailsComponent } from './components/character-details/character-details.component';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import { NotFoundComponent } from './components/not-found/not-found.component';
+import { DungeonsComponent } from './components/dungeons/dungeons.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +27,9 @@ import { CharacterDetailsComponent } from './components/character-details/charac
     NavbarComponent,
     HomeComponent,
     SearchComponent,
-    CharacterDetailsComponent
+    CharacterDetailsComponent,
+    NotFoundComponent,
+    DungeonsComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +41,8 @@ import { CharacterDetailsComponent } from './components/character-details/charac
     MatCardModule,
     MatTooltipModule,
     MatAutocompleteModule,
-    MatSelectModule
+    MatSelectModule,
+    MatToolbarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

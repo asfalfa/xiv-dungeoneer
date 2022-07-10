@@ -1,1 +1,27 @@
-<p>navbar works!</p>
+
+
+<mat-toolbar class="toolbar font--righteous" role="banner">
+   <div class="font--righteous">
+    Hallo.
+   </div>
+    <form #form="ngForm" (ngSubmit)="onSubmit(form)"> 
+        <input
+            name="search"
+            placeholder="search for character"
+            ngModel
+        />
+
+        <select ngModel name="server">
+            <option *ngFor="let server of servers" value="{{server}}">{{server}}</option>
+
+
+        </select>
+
+        <button>
+        search
+        </button>
+
+    </form>
+    <a mat-flat-button href="/" color="primary" class="font--righteous">Home</a>
+    <a mat-flat-button href="/minions" color="primary" class="font--righteous">Minions</a>
+</mat-toolbar>

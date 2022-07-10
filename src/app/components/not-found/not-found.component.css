@@ -1,0 +1,15 @@
+body {
+    background-color: lightblue;
+  }
+
+  h1 {
+    color: #8A0707;
+    text-align: center;
+    font-family: "Righteous", Sans-serif !important;
+  }
+  
+  p {
+    color: rgb(31, 26, 26);
+    font-family: "Righteous";
+    font-size: 20px;
+  }
