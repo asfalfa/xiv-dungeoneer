@@ -37,6 +37,7 @@ export interface DungeonDetails {
 // Minion characteristics 
 /* lslfjldf **/
 export interface Minion {
+    blacklist: boolean;
     id: number;
     name: string;
     description: string;
@@ -70,6 +71,7 @@ interface Category {
 }
 
 export interface Mount {
+    blacklist: boolean;
     id: number;
     name: string;
     description: string;
@@ -92,10 +94,18 @@ export interface Character {
 
 export interface CharacterInfo {
     Character: CharacterDetails;
-    Minions: Array<Minion>;
-    Mounts: Array<Mount>;
+    Minions: Array<XIVAPIMinion>;
+    Mounts: Array<XIVAPIMount>;
 }
 
+interface XIVAPIMinion {
+    Icon: string;
+    Name: string;
+}
+interface XIVAPIMount {
+    Icon: string;
+    Name: string;
+}
 interface CharacterDetails {
     DC: string;
     Server: string;
