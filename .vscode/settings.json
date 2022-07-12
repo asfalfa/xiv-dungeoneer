@@ -1,6 +1,7 @@
 {
     "conventionalCommits.scopes": [
         "API",
-        "search scope"
+        "search scope",
+        "Characters"
     ]
 }
