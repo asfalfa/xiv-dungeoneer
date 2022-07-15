@@ -126,20 +126,20 @@ export class CharacterDetailsComponent implements OnInit, OnDestroy {
     for (let i = 0; i < this.minions.length; i++) {
       for (let j = 0; j < this.character.Minions.length; j++){
         if(this.character.Minions[j].Name == this.minions[i].name){
-          this.minions[i].blacklist = true;
+          this.minions[i].player_owns = true;
         }
       }
     }
     for (let i = 0; i < this.mounts.length; i++) {
       for (let j = 0; j < this.character.Mounts.length; j++){
         if(this.character.Mounts[j].Name == this.mounts[i].name){
-          this.mounts[i].blacklist = true;
+          this.mounts[i].player_owns = true;
         }
       }
     }
   }
 
-  ngOnDestroy(): void{
+  ngOnDestroy(): void {
     if (this.charSub){
       this.charSub.unsubscribe();
     }

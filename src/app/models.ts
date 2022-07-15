@@ -37,7 +37,7 @@ export interface DungeonDetails {
 // Minion characteristics 
 /* lslfjldf **/
 export interface Minion {
-    blacklist: boolean;
+    player_owns: boolean;
     id: number;
     name: string;
     description: string;
@@ -71,7 +71,7 @@ interface Category {
 }
 
 export interface Mount {
-    blacklist: boolean;
+    player_owns: boolean;
     id: number;
     name: string;
     description: string;
