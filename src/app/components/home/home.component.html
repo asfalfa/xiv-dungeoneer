@@ -2,40 +2,40 @@
 <div class="content">
  <!-- Here we will make a loop of all dungeons, each dungeon will have its name, then three loops, for minions, music and mounts -->
  <div *ngFor="let dungeon of dungeonInfo">
-    <div *ngIf="dungeon.minions">
-    <mat-card>
-        <mat-card-title>{{dungeon.dungeon.Name}}</mat-card-title>
-            <mat-card-content>
-            <div> 
-                <mat-card *ngFor="let minion of dungeon.minions">
-                <mat-card-title>{{minion.name}}</mat-card-title>
-                <img mat-card-sm-image matTooltip="{{minion.enhanced_description}}" matTooltipClass="minion_desc" src="{{minion.image}}" alt="{{minion.name}}">
-                <mat-card-content>
-                  <p>{{minion.enhanced_description}}</p>
-                </mat-card-content>
-              </mat-card>
-            </div>
-
-            <div> 
-                <mat-card *ngFor="let orchestrionRoll of dungeon.orchestrions">
-
-                <mat-card-title>{{orchestrionRoll.name}}</mat-card-title>
-                <img mat-card-sm-image matTooltip="{{orchestrionRoll.description}}" matTooltipClass="minion_desc" src="{{orchestrionRoll.icon}}" alt="{{orchestrionRoll.name}}">
-              </mat-card>
-            </div>
-
-            <div>
-                <mat-card *ngFor="let mount of dungeon.mounts">
-                    <mat-card-title>{{mount.name}}</mat-card-title>
-                    <img mat-card-sm-image matTooltip="{{mount.enhanced_description}}" matTooltipClass="minion_desc" src="{{mount.image}}" alt="{{mount.name}}">
-                    <mat-card-content>
-                      <p>{{mount.enhanced_description}}</p>
-                    </mat-card-content>
+    <div *ngIf="dungeon.minions || dungeon.mounts || dungeon.orchestrions">
+      <mat-card>
+          <mat-card-title>{{dungeon.dungeon.Name}}</mat-card-title>
+              <mat-card-content>
+              <div> 
+                  <mat-card *ngFor="let minion of dungeon.minions">
+                  <mat-card-title>{{minion.name}}</mat-card-title>
+                  <img mat-card-sm-image matTooltip="{{minion.enhanced_description}}" matTooltipClass="minion_desc" src="{{minion.image}}" alt="{{minion.name}}">
+                  <mat-card-content>
+                    <p>{{minion.enhanced_description}}</p>
+                  </mat-card-content>
                 </mat-card>
-            
-            </div>
-             </mat-card-content>
-    </mat-card>
+              </div>
+
+              <div> 
+                  <mat-card *ngFor="let orchestrionRoll of dungeon.orchestrions">
+
+                  <mat-card-title>{{orchestrionRoll.name}}</mat-card-title>
+                  <img mat-card-sm-image matTooltip="{{orchestrionRoll.description}}" matTooltipClass="minion_desc" src="{{orchestrionRoll.icon}}" alt="{{orchestrionRoll.name}}">
+                </mat-card>
+              </div>
+
+              <div>
+                  <mat-card *ngFor="let mount of dungeon.mounts">
+                      <mat-card-title>{{mount.name}}</mat-card-title>
+                      <img mat-card-sm-image matTooltip="{{mount.enhanced_description}}" matTooltipClass="minion_desc" src="{{mount.image}}" alt="{{mount.name}}">
+                      <mat-card-content>
+                        <p>{{mount.enhanced_description}}</p>
+                      </mat-card-content>
+                  </mat-card>
+              
+              </div>
+              </mat-card-content>
+      </mat-card>
     </div>
 
 </div>
