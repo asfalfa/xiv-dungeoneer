@@ -2,7 +2,7 @@
 <div class="container">
     <div class="item">
         <div class="item-header-container">
-            <div class="item-text-container">
+            <div class="item-text-container" *ngIf="character">
                 <p class="item-version">{{ character.Character.ID }}</p>
                 <p class="item-name">{{ character.Character.Name }}</p>
                 <div class="item-information">
