@@ -1,10 +1,12 @@
 <div *ngFor="let dungeon of dungeonInfo">
+    <button>Hide Owned Minions</button>
+
     <div *ngIf="dungeon.minions">
     <mat-card>
         <mat-card-title>{{dungeon.dungeon.Name}}</mat-card-title>
             <mat-card-content>
-            <div> 
-                <mat-card *ngFor="let minion of dungeon.minions">
+            <div *ngFor="let minion of dungeon.minions"> 
+                <mat-card class="owned" [class.owned]="minion.player_owns == true">
                 <mat-card-title>{{minion.name}}</mat-card-title>
                 <img mat-card-sm-image matTooltip="{{minion.enhanced_description}}" matTooltipClass="minion_desc" src="{{minion.image}}" alt="{{minion.name}}">
                 <mat-card-content>
