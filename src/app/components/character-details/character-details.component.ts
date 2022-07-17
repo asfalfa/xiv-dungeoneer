@@ -43,6 +43,17 @@ export class CharacterDetailsComponent implements OnInit, OnDestroy {
     setTimeout(() => {this.matchItems(this.dungeons);}, 2000);
   }
 
+  filterOwned(): void {
+    const owned = document.querySelectorAll<HTMLElement>('.owned');
+    for (let i = 0; i < owned.length; i++){
+      if(owned[i].style.display !== 'none' ){
+        owned[i].style.display = 'none';
+      } else{
+        owned[i].style.display = 'flex';
+      }
+    }
+  }
+
   getCharDetails(id: number): void {
     this.charSub = this.httpService
       .getCharDetails(id).subscribe((CharacterInfo: CharacterInfo) => {
