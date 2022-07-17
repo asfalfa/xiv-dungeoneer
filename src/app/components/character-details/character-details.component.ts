@@ -31,6 +31,23 @@ export class CharacterDetailsComponent implements OnInit, OnDestroy {
     private httpService: HttpService
     ) { }
 
+  hideOwnedMinions(): void {
+    let ownedMinions = document.querySelectorAll<HTMLElement>('.owned');
+
+    for (let i = 0; i < ownedMinions.length; i++)
+
+    {if (ownedMinions[i].style.display !=="none") {
+      ownedMinions[i].style.display ="none"
+    }
+    else {
+      ownedMinions[i].style.display ="block"
+    }  
+  }
+
+
+  }
+
+
   ngOnInit(): void {
     this.routeSub = this.ActivatedRoute.params.subscribe((params: Params) => {
       this.charId = params['id'];

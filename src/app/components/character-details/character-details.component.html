@@ -1,5 +1,6 @@
+<button (click)="hideOwnedMinions()">Hide Owned Minions</button>
 <div *ngFor="let dungeon of dungeonInfo">
-    <button>Hide Owned Minions</button>
+    
 
     <div *ngIf="dungeon.minions">
     <mat-card>
