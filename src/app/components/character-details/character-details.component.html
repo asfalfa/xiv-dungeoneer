@@ -1,16 +1,38 @@
-
-<div class="container">
-    <div class="item">
-        <div class="item-header-container">
-            <div class="item-text-container" *ngIf="character">
-                <p class="item-version">{{ character.Character.ID }}</p>
-                <p class="item-name">{{ character.Character.Name }}</p>
-                <div class="item-information">
-                    <div class="item-categories">
-                        <p class="item-categories-content">{{ character.Character.Server }} - {{ character.Character.DC }}</p>
-                        <p class="item-categories-content">{{ character.Character.FreeCompanyName }}</p>
-                </div>
+<div *ngFor="let dungeon of dungeonInfo">
+    <div *ngIf="dungeon.minions">
+    <mat-card>
+        <mat-card-title>{{dungeon.dungeon.Name}}</mat-card-title>
+            <mat-card-content>
+            <div> 
+                <mat-card *ngFor="let minion of dungeon.minions">
+                <mat-card-title>{{minion.name}}</mat-card-title>
+                <img mat-card-sm-image matTooltip="{{minion.enhanced_description}}" matTooltipClass="minion_desc" src="{{minion.image}}" alt="{{minion.name}}">
+                <mat-card-content>
+                  <p>{{minion.enhanced_description}}</p>
+                </mat-card-content>
+              </mat-card>
             </div>
-        </div>
+
+            <div> 
+                <mat-card *ngFor="let orchestrionRoll of dungeon.orchestrions">
+
+                <mat-card-title>{{orchestrionRoll.name}}</mat-card-title>
+                <img mat-card-sm-image matTooltip="{{orchestrionRoll.description}}" matTooltipClass="minion_desc" src="{{orchestrionRoll.icon}}" alt="{{orchestrionRoll.name}}">
+              </mat-card>
+            </div>
+
+            <div>
+                <mat-card *ngFor="let mount of dungeon.mounts">
+                    <mat-card-title>{{mount.name}}</mat-card-title>
+                    <img mat-card-sm-image matTooltip="{{mount.enhanced_description}}" matTooltipClass="minion_desc" src="{{mount.image}}" alt="{{mount.name}}">
+                    <mat-card-content>
+                      <p>{{mount.enhanced_description}}</p>
+                    </mat-card-content>
+                </mat-card>
+            
+            </div>
+             </mat-card-content>
+    </mat-card>
     </div>
+
 </div>
