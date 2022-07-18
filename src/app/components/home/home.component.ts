@@ -26,6 +26,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
+    this.httpService.test().subscribe((results: any) =>{ console.log(results)});
     this.getMinions();
     this.getOrchestrions();
     this.getMounts();
