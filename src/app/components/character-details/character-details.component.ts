@@ -43,11 +43,34 @@ export class CharacterDetailsComponent implements OnInit, OnDestroy {
       }  
     } 
   }
+  ownedOrchestrionRoll(orchestrion: string): void {
+    let ownedOrchestrion = localStorage.getItem(orchestrion)
+
+    if (ownedOrchestrion =="true") {
+      localStorage.setItem(orchestrion, "false")
+      }
+    else {
+      localStorage.setItem(orchestrion, "true")
+    }
+  }
+
 
   displayLocalStorage(): void {
     const storage = { ...localStorage };
     const items = Object.entries(storage);
     console.log(items);
+
+    for (let i = 0; i < items.length; i++){
+      let element = document.getElementById(items[i][0])
+      console.log(element)
+      if (items[i][1] == "true") {
+        if (element) {
+          element.setAttribute("checked", "checked")
+      }
+    }
+
+
+    }
     // We have all the localStorage data in an array, we should loop over it and check if their value is true or false, then check the checkbox or not depending on that
   }
 

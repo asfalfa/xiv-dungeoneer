@@ -18,7 +18,7 @@
 
             <div> 
                 <mat-card *ngFor="let orchestrionRoll of dungeon.orchestrions">
-
+                <input type="checkbox" id="{{orchestrionRoll.name}}" (click)="ownedOrchestrionRoll(orchestrionRoll.name)"> 
                 <mat-card-title>{{orchestrionRoll.name}}</mat-card-title>
                 <img mat-card-sm-image matTooltip="{{orchestrionRoll.description}}" matTooltipClass="minion_desc" src="{{orchestrionRoll.icon}}" alt="{{orchestrionRoll.name}}">
               </mat-card>
