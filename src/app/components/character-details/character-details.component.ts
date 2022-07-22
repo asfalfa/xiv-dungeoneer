@@ -34,19 +34,22 @@ export class CharacterDetailsComponent implements OnInit, OnDestroy {
   hideOwnedMinions(): void {
     let ownedMinions = document.querySelectorAll<HTMLElement>('.owned');
 
-    for (let i = 0; i < ownedMinions.length; i++)
-
-    {if (ownedMinions[i].style.display !=="none") {
-      ownedMinions[i].style.display ="none"
-    }
-    else {
-      ownedMinions[i].style.display ="block"
-    }  
+    for (let i = 0; i < ownedMinions.length; i++){
+      if (ownedMinions[i].style.display !=="none") {
+        ownedMinions[i].style.display ="none"
+      }
+      else {
+        ownedMinions[i].style.display ="block"
+      }  
+    } 
   }
 
-
+  displayLocalStorage(): void {
+    const storage = { ...localStorage };
+    const items = Object.entries(storage);
+    console.log(items);
+    // We have all the localStorage data in an array, we should loop over it and check if their value is true or false, then check the checkbox or not depending on that
   }
-
 
   ngOnInit(): void {
     this.routeSub = this.ActivatedRoute.params.subscribe((params: Params) => {
@@ -154,6 +157,7 @@ export class CharacterDetailsComponent implements OnInit, OnDestroy {
         }
       }
     }
+    this.displayLocalStorage();
   }
 
   ngOnDestroy(): void {
