@@ -70,7 +70,6 @@ export class HomeComponent implements OnInit, OnDestroy {
       this.mounts = (mountList.results).filter(mount => {
         return mount.sources[0].type == 'Dungeon';
       });
-      console.log(this.mounts);
     })
   }
 
@@ -78,7 +77,6 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.httpService
       .getDungeonsDetails(id)
       .subscribe((details: DungeonDetails) => {
-        console.log(details)
         return details;
       })
   }
@@ -110,17 +108,6 @@ export class HomeComponent implements OnInit, OnDestroy {
       }
       this.dungeonInfo.push(newItem);
     }
-    console.log(this.dungeonInfo);
-  }
-
-  // Here! This is the function that will be executed when you press that button
-  itDoesSomething(): void { // the structure in angular is:    name(input): output {}   more info below
-    // We establish the name, we dont need any input, thats why () is empty, and we dont output anything, thats why we say void
-    // Input would be something outside of this function that we use inside it
-    // Output would be if we take some final product out of this function to use somewhere else.
-    //    --   z.B if you were to make a car, one function makes a wheel, you need inputs like the screws, the tires, etc, uses all of it and outputs the wheel, then you use the wheel to make the car somewhere else.
-    // In this case, we just want to console log the word hello, this means the word will be printed in the console.
-    console.log('hello');
   }
 
   ngOnDestroy(): void {

@@ -1,7 +1,6 @@
 
 <div class="content">
  <!-- Here we will make a loop of all dungeons, each dungeon will have its name, then three loops, for minions, music and mounts -->
- <button (click)="itDoesSomething()">I'm a Button</button> <!-- When we click the button, the itDoesSomething() function triggerrs, check ts file for what it does -->
  <div *ngFor="let dungeon of dungeonInfo">
     <div *ngIf="dungeon.minions || dungeon.mounts || dungeon.orchestrions">
       <mat-card>

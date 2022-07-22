@@ -42,7 +42,6 @@ export class SearchComponent implements OnInit {
       .getCharacter(name, server)
       .subscribe((itemList: XIVAPIResponse<Character>) => {
         this.characters = itemList.Results;
-        console.log(this.characters);
       });
   }
 }

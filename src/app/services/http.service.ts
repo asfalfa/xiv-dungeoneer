@@ -66,14 +66,12 @@ export class HttpService {
   pagination(direction?: string, lastPage?: number, count?: number): void {
     if (direction == 'up'){
       this.p = this.p + 1;
-      console.log(this.p);
     }
      else if (direction == 'down'){
       this.p = this.p - 1;
       if(this.p < 1){
         this.p = 1;
       }
-      console.log(this.p);
     } else if (lastPage){
       this.p = lastPage;
     } else if (count){

@@ -25,7 +25,6 @@ export class NavbarComponent implements OnInit {
     .getServers()
     .subscribe((servers: Array<string>) => {
       this.servers = servers;
-      console.log(servers);
     });
   }
   onSubmit(form: NgForm) {
