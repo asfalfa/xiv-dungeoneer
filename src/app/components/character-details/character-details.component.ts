@@ -43,13 +43,40 @@ export class CharacterDetailsComponent implements OnInit, OnDestroy {
     setTimeout(() => {this.matchItems(this.dungeons);}, 2000);
   }
 
-  filterOwned(): void {
-    const owned = document.querySelectorAll<HTMLElement>('.owned');
-    for (let i = 0; i < owned.length; i++){
-      if(owned[i].style.display !== 'none' ){
-        owned[i].style.display = 'none';
-      } else{
-        owned[i].style.display = 'flex';
+  hideOwnedMinions(): void {
+    let ownedMinions = document.querySelectorAll<HTMLElement>('.owned');
+
+    for (let i = 0; i < ownedMinions.length; i++){
+      if (ownedMinions[i].style.display !=="none") {
+        ownedMinions[i].style.display ="none"
+      }
+      else {
+        ownedMinions[i].style.display ="block"
+      }  
+    }
+  }
+
+  saveOrchestrion(orchestrion: string): void {
+    let savedOrchestrion = localStorage.getItem(orchestrion);
+    if(savedOrchestrion !== 'true'){
+      localStorage.setItem(orchestrion, 'true');
+      console.log(savedOrchestrion);
+    } else {
+      localStorage.setItem(orchestrion, 'false');
+      console.log(savedOrchestrion);
+    }
+  }
+
+  displayLocalStorage(): void {
+    const storage = { ...localStorage };
+    const items = Object.entries(storage);
+    console.log(items);
+    for(let i = 0; i < items.length; i++){
+      if(items[i][1] == 'true'){
+        let element = document.getElementById(items[i][0]);
+        if (element) {
+          element.setAttribute('checked','checked');
+        }
       }
     }
   }
@@ -58,7 +85,6 @@ export class CharacterDetailsComponent implements OnInit, OnDestroy {
     this.charSub = this.httpService
       .getCharDetails(id).subscribe((CharacterInfo: CharacterInfo) => {
         this.character = CharacterInfo;
-        console.log(this.character);
         this.characterCheck();
       })
   }
@@ -130,7 +156,6 @@ export class CharacterDetailsComponent implements OnInit, OnDestroy {
       }
       this.dungeonInfo.push(newItem);
     }
-    console.log(this.dungeonInfo);
   }
 
   characterCheck(): void {
@@ -148,6 +173,7 @@ export class CharacterDetailsComponent implements OnInit, OnDestroy {
         }
       }
     }
+    this.displayLocalStorage();
   }
 
   ngOnDestroy(): void {
