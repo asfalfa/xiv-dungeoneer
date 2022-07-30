@@ -92,6 +92,17 @@ export interface Character {
     Server: string;
 }
 
+export interface BlueMage {
+    id: number;
+    name: string;
+    description: string;
+    patch: string;
+    icon: string;
+    owned: string;
+    sources: Array<Source>
+    
+}
+
 export interface CharacterInfo {
     Character: CharacterDetails;
     Minions: Array<XIVAPIMinion>;

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { APIResponse, Character, CharacterInfo, Dungeon, DungeonDetails, Minion, Mount, Orchestrion, XIVAPIResponse } from '../models';
+import { APIResponse, BlueMage, Character, CharacterInfo, Dungeon, DungeonDetails, Minion, Mount, Orchestrion, XIVAPIResponse } from '../models';
 import { environment as env } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 
@@ -23,6 +23,11 @@ export class HttpService {
   getOrchestrions(): Observable<APIResponse<Orchestrion>> {
     return this.http.get<APIResponse<Orchestrion>>(`${env.COLLECTAPI}/orchestrions`);
   }
+
+  getBlueMage(): Observable<APIResponse<BlueMage>> {
+    return this.http.get<APIResponse<BlueMage>>(`${env.COLLECTAPI}/spells`);
+  }
+
 
   getDungeons(): Observable<XIVAPIResponse<Dungeon>>{
     return this.http.get<XIVAPIResponse<Dungeon>>(`${env.XIVAPI}/InstanceContent?limit=87`);

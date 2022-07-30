@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { APIResponse, Dungeon, DungeonDetails, MatchedItem, Minion, Mount, Orchestrion, XIVAPIResponse } from 'src/app/models';
+import { APIResponse, BlueMage, Dungeon, DungeonDetails, MatchedItem, Minion, Mount, Orchestrion, XIVAPIResponse } from 'src/app/models';
 import { HttpService } from 'src/app/services/http.service';
 
 @Component({
@@ -13,10 +13,12 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   public dungeons: Array<Dungeon> = [];
   public minions: Array<Minion> = [];
+  public spells: Array<BlueMage> = []
   public mounts: Array<Mount> = [];
   public orchestrions: Array<Orchestrion> = [];
 
   private minionSub !: Subscription;
+  private spellsSub !: Subscription;
   private orchestrionSub !: Subscription;
   private mountSub !: Subscription;
   private dungeonSub !: Subscription;
@@ -29,6 +31,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.getMinions();
     this.getOrchestrions();
     this.getMounts();
+    this.getBlueMage();
     this.getDungeons();
     setTimeout(() => {this.matchItems(this.dungeons);}, 2000);
   }
@@ -52,6 +55,18 @@ export class HomeComponent implements OnInit, OnDestroy {
       });
     })
   }
+
+  getBlueMage(): void {
+    this.spellsSub = this.httpService
+    .getBlueMage()
+    .subscribe((spellsList: APIResponse<BlueMage>) => {
+      this.spells = (spellsList.results).filter(spell => {
+        return spell.sources[1].type == 'Dungeon';
+      });
+      console.log(this.spells)
+    })
+  }
+
 
   getOrchestrions(): void {
     this.orchestrionSub = this.httpService
@@ -122,6 +137,9 @@ export class HomeComponent implements OnInit, OnDestroy {
     }
     if (this.dungeonSub){
       this.dungeonSub.unsubscribe();
+    }
+    if (this.spellsSub){
+      this.spellsSub.unsubscribe();
     }
   }
 }
