@@ -13,7 +13,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   public dungeons: Array<Dungeon> = [];
   public minions: Array<Minion> = [];
-  public spells: Array<BlueMage> = []
+  public spells: Array<BlueMage> = [];
   public mounts: Array<Mount> = [];
   public orchestrions: Array<Orchestrion> = [];
 

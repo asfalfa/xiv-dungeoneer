@@ -1,0 +1,9 @@
+<div class="content">
+    <mat-card *ngFor="let spell of spells">
+      <mat-card-title>{{spell.name}}</mat-card-title>
+      <img mat-card-sm-image src="{{spell.icon}}" alt="{{spell.name}}">
+      <mat-card-content>
+        <p>{{spell.description}}</p>
+      </mat-card-content>
+    </mat-card>
+</div>
