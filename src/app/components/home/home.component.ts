@@ -44,7 +44,7 @@ export class HomeComponent implements OnInit, OnDestroy {
         this.dungeons.push(dungeon.Results[i]);
       }
     })
-  }
+  } 
 
   getMinions(): void {
     this.minionSub = this.httpService
