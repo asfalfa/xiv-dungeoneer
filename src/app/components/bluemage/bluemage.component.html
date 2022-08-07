@@ -1,9 +1,27 @@
-<div class="content">
-    <mat-card *ngFor="let spell of spells">
-      <mat-card-title>{{spell.name}}</mat-card-title>
-      <img mat-card-sm-image src="{{spell.icon}}" alt="{{spell.name}}">
-      <mat-card-content>
-        <p>{{spell.description}}</p>
-      </mat-card-content>
-    </mat-card>
+<div>
+  <table>
+    <tr >
+      <th>ID</th>
+      <th>Icon</th>
+      <th>Name</th>
+      <th>Source</th>
+      <th class="header-padding text-center">Owned</th>
+      <th class="header-padding text-center">Patch</th>
+      <th class="header-padding text-center">Own it?</th>
+    </tr>
+
+    <tr *ngFor="let spell of spells">
+      <td class="text-center">{{spell.id}}</td>
+      <td><img style="border-radius: 5px; margin: 5px;" mat-card-sm-image src="{{spell.icon}}" alt="{{spell.name}}"></td>
+      <td class="padding-left">{{spell.name}}</td>
+      <td class="padding-left">
+        <div *ngFor="let source of spell.sources">{{source.text}}</div>
+      </td>
+      <td class="text-center">{{spell.owned}}</td>
+      <td class="text-center">{{spell.patch}}</td>
+      <td class="text-center"><input type="checkbox"></td>
+    </tr>
+    
+  </table>
+
 </div>

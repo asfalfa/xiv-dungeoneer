@@ -5,7 +5,8 @@
 export const environment = {
   production: false,
   XIVAPI: 'https://xivapi.com',
-  COLLECTAPI: 'https://ffxivcollect.com/api'
+  COLLECTAPI: 'https://ffxivcollect.com/api',
+  RAELYS: 'https://triad.raelys.com/api'
 };
 
 /*

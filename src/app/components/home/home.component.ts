@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { APIResponse, BlueMage, Dungeon, DungeonDetails, MatchedItem, Minion, Mount, Orchestrion, XIVAPIResponse } from 'src/app/models';
+import { APIResponse, BlueMage, Card, Dungeon, DungeonDetails, MatchedItem, Minion, Mount, Orchestrion, XIVAPIResponse } from 'src/app/models';
 import { HttpService } from 'src/app/services/http.service';
 
 @Component({
@@ -14,11 +14,13 @@ export class HomeComponent implements OnInit, OnDestroy {
   public dungeons: Array<Dungeon> = [];
   public minions: Array<Minion> = [];
   public spells: Array<BlueMage> = [];
+  public cards: Array<Card> = [];
   public mounts: Array<Mount> = [];
   public orchestrions: Array<Orchestrion> = [];
 
   private minionSub !: Subscription;
   private spellsSub !: Subscription;
+  private cardsSub !: Subscription;
   private orchestrionSub !: Subscription;
   private mountSub !: Subscription;
   private dungeonSub !: Subscription;
@@ -32,6 +34,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.getOrchestrions();
     this.getMounts();
     this.getBlueMage();
+    this.getCard();
     this.getDungeons();
     setTimeout(() => {this.matchItems(this.dungeons);}, 2000);
   }
@@ -60,13 +63,25 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.spellsSub = this.httpService
     .getBlueMage()
     .subscribe((spellsList: APIResponse<BlueMage>) => {
-      this.spells = (spellsList.results).filter(spell => {
-        return spell.sources[1].type == 'Dungeon';
-      });
+      this.spells = spellsList.results;
       console.log(this.spells)
     })
   }
 
+  getCard(): void {
+    this.cardsSub = this.httpService
+    .getCard()
+    .subscribe((cardsList: APIResponse<Card>) => {
+      this.cards = (cardsList.results).filter(card => {
+        if (card.sources.drops[0]) { 
+        return (card.sources.drops[0]).includes('Dungeon')} 
+        else {
+        return 
+        };
+      });
+      console.log(this.cards)
+    })
+  }
 
   getOrchestrions(): void {
     this.orchestrionSub = this.httpService
@@ -140,6 +155,9 @@ export class HomeComponent implements OnInit, OnDestroy {
     }
     if (this.spellsSub){
       this.spellsSub.unsubscribe();
+    }
+    if (this.cardsSub){
+      this.cardsSub.unsubscribe();
     }
   }
 }

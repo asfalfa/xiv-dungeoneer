@@ -55,6 +55,14 @@ interface Source {
     related_type?: string;
 }
 
+interface Source2 {
+    npcs: Array<string>;
+    packs: Array<string>;
+    drops: Array<string>;
+    purchase: string;
+}
+
+
 export interface Orchestrion {
     id: number;
     name: string;
@@ -100,6 +108,17 @@ export interface BlueMage {
     icon: string;
     owned: string;
     sources: Array<Source>
+    
+}
+
+export interface Card {
+    id: number;
+    name: string;
+    description: string;
+    patch: string;
+    icon: string;
+    owned: string;
+    sources: Source2
     
 }
 

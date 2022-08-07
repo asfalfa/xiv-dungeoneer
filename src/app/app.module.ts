@@ -20,6 +20,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { DungeonsComponent } from './components/dungeons/dungeons.component';
 import { BluemageComponent } from './components/bluemage/bluemage.component';
+import { CardsComponent } from './components/cards/cards.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { BluemageComponent } from './components/bluemage/bluemage.component';
     CharacterDetailsComponent,
     NotFoundComponent,
     DungeonsComponent,
-    BluemageComponent
+    BluemageComponent,
+    CardsComponent
   ],
   imports: [
     BrowserModule,

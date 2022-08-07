@@ -1,0 +1,32 @@
+.header-padding {
+    padding-top: 10px;
+    padding-right: 10px;
+    padding-bottom:10px;
+    padding-left: 10px;
+}
+
+.text-center {
+    text-align:center;
+}
+
+.padding-left {
+    padding-left: 7px;
+}
+
+table, td {
+    border-bottom: 1px solid black;
+    border-spacing: 0px;
+  }
+
+td {
+    padding:5px;
+}
+
+th {
+    border-bottom: 2px solid black;
+    border-spacing: 0px;
+}
+
+.icon {
+    display: flex;
+}
