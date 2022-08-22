@@ -195,7 +195,7 @@ app.get('/api/dungeons', async(req,res) => {
         res.json(dbDungeon);
     }
 })
-
+// This fills up some extra dungeon data like banners and descriptions
 app.get('/api/dungeonInfo', async(req,res) => {
     let dbDungeon = await dungeonModel.find();
     if(dbDungeon.length !== 0){

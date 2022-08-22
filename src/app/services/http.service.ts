@@ -17,31 +17,31 @@ export class HttpService {
   }
 
   getMinions(): Observable<APIResponse<Minion>> {
-    return this.http.get<APIResponse<Minion>>(`${env.COLLECTAPI}/minions`);
+    return this.http.get<APIResponse<Minion>>(`${env.API}/minions`);
   }
 
   getMounts(): Observable<APIResponse<Mount>> {
-    return this.http.get<APIResponse<Mount>>(`${env.COLLECTAPI}/mounts`);
+    return this.http.get<APIResponse<Mount>>(`${env.API}/mounts`);
   }
 
   getOrchestrions(): Observable<APIResponse<Orchestrion>> {
-    return this.http.get<APIResponse<Orchestrion>>(`${env.COLLECTAPI}/orchestrions`);
+    return this.http.get<APIResponse<Orchestrion>>(`${env.API}/orchestrions`);
   }
 
   getBlueMage(): Observable<APIResponse<BlueMage>> {
-    return this.http.get<APIResponse<BlueMage>>(`${env.COLLECTAPI}/spells`);
+    return this.http.get<APIResponse<BlueMage>>(`${env.API}/spells`);
   }
 
   getCard(): Observable<APIResponse<Card>> {
-    return this.http.get<APIResponse<Card>>(`${env.RAELYS}/cards`)
+    return this.http.get<APIResponse<Card>>(`${env.API}/cards`)
   }
 
   getDungeons(): Observable<XIVAPIResponse<Dungeon>>{
-    return this.http.get<XIVAPIResponse<Dungeon>>(`${env.XIVAPI}/InstanceContent?limit=87`);
+    return this.http.get<XIVAPIResponse<Dungeon>>(`${env.API}/InstanceContent?limit=87`);
   }
 
   getDungeonsDetails(id: Number): Observable<DungeonDetails>{
-    return this.http.get<DungeonDetails>(`${env.XIVAPI}/InstanceContent/${id}`);
+    return this.http.get<DungeonDetails>(`${env.API}/InstanceContent/${id}`);
   }
 
   getCharacter(name?: string, server?: string){
