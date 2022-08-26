@@ -1,8 +1,3 @@
-export interface APIResponse<T> {
-    count: number;
-    results: Array<T>;
-}
-
 export interface XIVAPIResponse<T> {
     Pagination: Pagination;
     Results: Array<T>;
@@ -26,16 +21,13 @@ export interface MatchedItem {
 
 export interface Dungeon {
     ID: number;
-    Name: string;
+    name: string;
+    description: string;
+    banner: string;
+    patch: string;
 }
 
-export interface DungeonDetails {
-    ID: number;
-    Name: string;
-    Banner: string;
-}
 // Minion characteristics 
-/* lslfjldf **/
 export interface Minion {
     player_owns: boolean;
     id: number;

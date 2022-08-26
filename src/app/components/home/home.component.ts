@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { APIResponse, BlueMage, Card, Dungeon, DungeonDetails, MatchedItem, Minion, Mount, Orchestrion, XIVAPIResponse } from 'src/app/models';
+import { BlueMage, Card, Dungeon, MatchedItem, Minion, Mount, Orchestrion, } from 'src/app/models';
 import { HttpService } from 'src/app/services/http.service';
 
 @Component({
@@ -43,9 +43,9 @@ export class HomeComponent implements OnInit, OnDestroy {
   getDungeons(): void {
     this.dungeonSub = this.httpService
     .getDungeons()
-    .subscribe((dungeon: XIVAPIResponse<Dungeon>) => {
-      for (let i = 0; i < dungeon.Results.length; i++){
-        this.dungeons.push(dungeon.Results[i]);
+    .subscribe((dungeon: Array<Dungeon>) => {
+      for (let i = 0; i < dungeon.length; i++){
+        this.dungeons.push(dungeon[i]);
       }
     })
   } 
@@ -53,8 +53,8 @@ export class HomeComponent implements OnInit, OnDestroy {
   getMinions(): void {
     this.minionSub = this.httpService
     .getMinions()
-    .subscribe((minionList: APIResponse<Minion>) => {
-      this.minions = (minionList.results).filter(minion => {
+    .subscribe((minionList: Array<Minion>) => {
+      this.minions = (minionList).filter((minion: any) => {
         return minion.sources[0].type == 'Dungeon';
       });
     })
@@ -63,8 +63,8 @@ export class HomeComponent implements OnInit, OnDestroy {
   getBlueMage(): void {
     this.spellsSub = this.httpService
     .getBlueMage()
-    .subscribe((spellsList: APIResponse<BlueMage>) => {
-      this.spells = spellsList.results;
+    .subscribe((spellsList: Array<BlueMage>) => {
+      this.spells = spellsList;
       console.log(this.spells)
     })
   }
@@ -72,8 +72,8 @@ export class HomeComponent implements OnInit, OnDestroy {
   getCard(): void {
     this.cardsSub = this.httpService
     .getCard()
-    .subscribe((cardsList: APIResponse<Card>) => {
-      this.cards = (cardsList.results).filter(card => {
+    .subscribe((cardsList: Array<Card>) => {
+      this.cards = (cardsList).filter((card: any ) => {
         if (card.sources.drops[0]) { 
         return (card.sources.drops[0]).includes('Dungeon')} 
         else {
@@ -87,8 +87,8 @@ export class HomeComponent implements OnInit, OnDestroy {
   getOrchestrions(): void {
     this.orchestrionSub = this.httpService
     .getOrchestrions()
-    .subscribe((orchestrionList: APIResponse<Orchestrion>) => {
-      this.orchestrions = (orchestrionList.results).filter(orchestrion => {
+    .subscribe((orchestrionList: Array<Orchestrion>) => {
+      this.orchestrions = (orchestrionList).filter((orchestrion: any) => {
         return orchestrion.category.name == 'Dungeons';
       });
     })
@@ -97,32 +97,24 @@ export class HomeComponent implements OnInit, OnDestroy {
   getMounts(): void {
     this.mountSub = this.httpService
     .getMounts()
-    .subscribe((mountList: APIResponse<Mount>) => {
-      this.mounts = (mountList.results).filter(mount => {
+    .subscribe((mountList: Array<Mount>) => {
+      this.mounts = (mountList).filter((mount: any) => {
         return mount.sources[0].type == 'Dungeon';
       });
     })
   }
 
-  getDungeonDetails(id: number): void {
-    this.httpService
-      .getDungeonsDetails(id)
-      .subscribe((details: DungeonDetails) => {
-        return details;
-      })
-  }
-
   matchItems(dungeons: Array<Dungeon>): void {
     for (let i = 0; i < dungeons.length; i++){
-      let dungeonName = dungeons[i].Name;
+      let dungeonName = dungeons[i].name;
       
-      let dungeonMinions = (this.minions).filter(minion => {
+      let dungeonMinions = (this.minions).filter((minion: any) => {
         return minion.sources[0].text.includes(dungeonName);
       });
-      let dungeonMounts = (this.mounts).filter(mount => {
+      let dungeonMounts = (this.mounts).filter((mount: any) => {
         return mount.sources[0].text.includes(dungeonName);
       });
-      let dungeonOrchestrions = (this.orchestrions).filter(orchestrion => {
+      let dungeonOrchestrions = (this.orchestrions).filter((orchestrion: any) => {
         return orchestrion.description.includes(`${dungeonName}.`);
       });
       let newItem: MatchedItem = {

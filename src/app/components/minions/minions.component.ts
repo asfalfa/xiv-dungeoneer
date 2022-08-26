@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { APIResponse, Minion } from 'src/app/models';
+import { Minion } from 'src/app/models';
 import { HttpService } from 'src/app/services/http.service';
 
 @Component({
@@ -23,8 +23,8 @@ export class MinionsComponent implements OnInit, OnDestroy {
   getMinions(): void {
     this.minionSub = this.httpService
     .getMinions()
-    .subscribe((minionList: APIResponse<Minion>) => {
-      this.minions = (minionList.results).filter(minion => {
+    .subscribe((minionList: Array<Minion>) => {
+      this.minions = (minionList).filter(minion => {
         return minion.sources[0].type == 'Dungeon';
       });
     })

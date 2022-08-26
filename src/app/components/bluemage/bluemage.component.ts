@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { APIResponse, BlueMage } from 'src/app/models';
+import { BlueMage } from 'src/app/models';
 import { HttpService } from 'src/app/services/http.service';
 
 @Component({
@@ -25,8 +25,8 @@ export class BluemageComponent implements OnInit, OnDestroy {
   getBlueMage(): void {
     this.spellsSub = this.httpService
     .getBlueMage()
-    .subscribe((spellsList: APIResponse<BlueMage>) => {
-      this.spells = spellsList.results;
+    .subscribe((spellsList: Array<BlueMage>) => {
+      this.spells = spellsList;
       console.log(this.spells);
     })
   }

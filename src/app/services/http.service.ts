@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { APIResponse, BlueMage, Card, Character, CharacterInfo, Dungeon, DungeonDetails, Minion, Mount, Orchestrion, XIVAPIResponse } from '../models';
+import { BlueMage, Card, Character, CharacterInfo, Dungeon, Minion, Mount, Orchestrion, XIVAPIResponse } from '../models';
 import { environment as env } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 
@@ -16,32 +16,28 @@ export class HttpService {
     return this.http.get<any>(`/api/test`);
   }
 
-  getMinions(): Observable<APIResponse<Minion>> {
-    return this.http.get<APIResponse<Minion>>(`${env.API}/minions`);
+  getMinions(): Observable<Array<Minion>> {
+    return this.http.get<Array<Minion>>(`${env.API}/minions`);
   }
 
-  getMounts(): Observable<APIResponse<Mount>> {
-    return this.http.get<APIResponse<Mount>>(`${env.API}/mounts`);
+  getMounts(): Observable<Array<Mount>> {
+    return this.http.get<Array<Mount>>(`${env.API}/mounts`);
   }
 
-  getOrchestrions(): Observable<APIResponse<Orchestrion>> {
-    return this.http.get<APIResponse<Orchestrion>>(`${env.API}/orchestrions`);
+  getOrchestrions(): Observable<Array<Orchestrion>> {
+    return this.http.get<Array<Orchestrion>>(`${env.API}/orchestrions`);
   }
 
-  getBlueMage(): Observable<APIResponse<BlueMage>> {
-    return this.http.get<APIResponse<BlueMage>>(`${env.API}/spells`);
+  getBlueMage(): Observable<Array<BlueMage>> {
+    return this.http.get<Array<BlueMage>>(`${env.API}/spells`);
   }
 
-  getCard(): Observable<APIResponse<Card>> {
-    return this.http.get<APIResponse<Card>>(`${env.API}/cards`)
+  getCard(): Observable<Array<Card>> {
+    return this.http.get<Array<Card>>(`${env.API}/cards`)
   }
 
-  getDungeons(): Observable<XIVAPIResponse<Dungeon>>{
-    return this.http.get<XIVAPIResponse<Dungeon>>(`${env.API}/InstanceContent?limit=87`);
-  }
-
-  getDungeonsDetails(id: Number): Observable<DungeonDetails>{
-    return this.http.get<DungeonDetails>(`${env.API}/InstanceContent/${id}`);
+  getDungeons(): Observable<Array<Dungeon>>{
+    return this.http.get<Array<Dungeon>>(`${env.API}/dungeons`);
   }
 
   getCharacter(name?: string, server?: string){

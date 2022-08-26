@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { APIResponse, CharacterInfo, Dungeon, MatchedItem, Minion, Mount, Orchestrion, XIVAPIResponse } from 'src/app/models';
+import { CharacterInfo, Dungeon, MatchedItem, Minion, Mount, Orchestrion, XIVAPIResponse } from 'src/app/models';
 import { HttpService } from 'src/app/services/http.service';
 
 @Component({
@@ -98,9 +98,9 @@ export class CharacterDetailsComponent implements OnInit, OnDestroy {
   getDungeons(): void {
     this.dungeonSub = this.httpService
     .getDungeons()
-    .subscribe((dungeon: XIVAPIResponse<Dungeon>) => {
-      for (let i = 0; i < dungeon.Results.length; i++){
-        this.dungeons.push(dungeon.Results[i]);
+    .subscribe((dungeon: Array<Dungeon>) => {
+      for (let i = 0; i < dungeon.length; i++){
+        this.dungeons.push(dungeon[i]);
       }
     })
   }
@@ -108,8 +108,8 @@ export class CharacterDetailsComponent implements OnInit, OnDestroy {
   getMinions(): void {
     this.minionSub = this.httpService
     .getMinions()
-    .subscribe((minionList: APIResponse<Minion>) => {
-      this.minions = (minionList.results).filter(minion => {
+    .subscribe((minionList: Array<Minion>) => {
+      this.minions = (minionList).filter(minion => {
         return minion.sources[0].type == 'Dungeon';
       });
     })
@@ -118,8 +118,8 @@ export class CharacterDetailsComponent implements OnInit, OnDestroy {
   getOrchestrions(): void {
     this.orchestrionSub = this.httpService
     .getOrchestrions()
-    .subscribe((orchestrionList: APIResponse<Orchestrion>) => {
-      this.orchestrions = (orchestrionList.results).filter(orchestrion => {
+    .subscribe((orchestrionList: Array<Orchestrion>) => {
+      this.orchestrions = (orchestrionList).filter(orchestrion => {
         return orchestrion.category.name == 'Dungeons';
       });
     })
@@ -128,8 +128,8 @@ export class CharacterDetailsComponent implements OnInit, OnDestroy {
   getMounts(): void {
     this.mountSub = this.httpService
     .getMounts()
-    .subscribe((mountList: APIResponse<Mount>) => {
-      this.mounts = (mountList.results).filter(mount => {
+    .subscribe((mountList: Array<Mount>) => {
+      this.mounts = (mountList).filter(mount => {
         return mount.sources[0].type == 'Dungeon';
       });
     })
@@ -137,7 +137,7 @@ export class CharacterDetailsComponent implements OnInit, OnDestroy {
 
   matchItems(dungeons: Array<Dungeon>): void {
     for (let i = 0; i < dungeons.length; i++){
-      let dungeonName = dungeons[i].Name;
+      let dungeonName = dungeons[i].name;
       
       let dungeonMinions = (this.minions).filter(minion => {
         return minion.sources[0].text.includes(dungeonName);

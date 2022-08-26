@@ -4,7 +4,7 @@
  <div *ngFor="let dungeon of dungeonInfo">
     <div *ngIf="dungeon.minions || dungeon.mounts || dungeon.orchestrions">
       <mat-card>
-          <mat-card-title>{{dungeon.dungeon.Name}}</mat-card-title>
+          <mat-card-title>{{dungeon.dungeon.name}}</mat-card-title>
               <mat-card-content>
               <div> 
                   <mat-card *ngFor="let minion of dungeon.minions">
