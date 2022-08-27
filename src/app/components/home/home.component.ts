@@ -74,13 +74,14 @@ export class HomeComponent implements OnInit, OnDestroy {
     .getCard()
     .subscribe((cardsList: Array<Card>) => {
       this.cards = (cardsList).filter((card: any ) => {
-        if (card.sources.drops[0]) { 
-        return (card.sources.drops[0]).includes('Dungeon')} 
-        else {
-        return 
-        };
+        for ( let i=0; i < card.sources.drops.length; i++) {
+          let cardregex = /Dungeon|Raid/g;
+          if ((card.sources.drops[i]).match(cardregex)) {
+            return card;
+          }      
+        }     
       });
-      console.log(this.cards)
+    console.log(this.cards)
     })
   }
 
@@ -115,7 +116,23 @@ export class HomeComponent implements OnInit, OnDestroy {
         return mount.sources[0].text.includes(dungeonName);
       });
       let dungeonOrchestrions = (this.orchestrions).filter((orchestrion: any) => {
-        return orchestrion.description.includes(`${dungeonName}.`);
+        if(orchestrion.description){
+          return orchestrion.description.includes(`${dungeonName}.`);
+        }
+      });
+      let dungeonCards = (this.cards).filter((card: any) => {
+        for ( let i = 0; i < card.sources.drops.length; i++) {
+          if (card.sources.drops[i].includes(dungeonName)) {
+            return card;
+          }
+        }
+      });
+      let dungeonSpells = (this.spells).filter((spell: any) => {
+        for ( let i = 0; i < spell.sources.length; i++) {
+          if (spell.sources[i].text.includes(dungeonName)) {
+            return spell;
+          }
+        }
       });
       let newItem: MatchedItem = {
         dungeon: this.dungeons[i],
@@ -128,6 +145,12 @@ export class HomeComponent implements OnInit, OnDestroy {
       }
       if(dungeonMounts.length != 0){
         newItem.mounts = dungeonMounts;
+      }
+      if(dungeonCards.length != 0){
+        newItem.cards = dungeonCards;
+      }
+      if(dungeonSpells.length != 0){
+        newItem.spells = dungeonSpells;
       }
       this.dungeonInfo.push(newItem);
     }

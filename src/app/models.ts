@@ -13,6 +13,8 @@ export interface Pagination {
 
 /** This is the end product */
 export interface MatchedItem {
+    cards?: any;
+    spells?: any;
     dungeon: Dungeon; /** See Line 27 for details */
     orchestrions?: Array<Orchestrion>; /** See Line 57 for details */
     minions?: Array<Minion>; /** See Line 39 for details */
