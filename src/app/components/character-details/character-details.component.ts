@@ -48,13 +48,47 @@ export class CharacterDetailsComponent implements OnInit, OnDestroy {
     } 
   }
   ownedOrchestrionRoll(orchestrion: string): void {
-    let ownedOrchestrion = localStorage.getItem(orchestrion)
+    let characterData = localStorage.getItem(this.character.Character.Name)
+    if(characterData){
+      let character = JSON.parse(characterData);
+      if(character.orchestrions.includes(orchestrion)){
+        let foundOrchestrion = character.orchestrions.includes(orchestrion);
+        if (foundOrchestrion == "true") {
+          let data = {
+            foundOrchestrion: "false"
+          }
+          character.orchestrions.push(data)
+          localStorage.setItem(this.character.Character.Name,  JSON.stringify(character))
+          }
+        else {
+          let data = {
+            foundOrchestrion: "true"
+          }
+          character.orchestrions.push(data)
+          localStorage.setItem(this.character.Character.Name,  JSON.stringify(character))
+        }
+      }
+    }
+  } 
+  ownedCard(card: string): void {
+    let ownedCard = localStorage.getItem(card)
 
-    if (ownedOrchestrion =="true") {
-      localStorage.setItem(orchestrion, "false")
+    if (ownedCard =="true") {
+      localStorage.setItem(card, "false")
       }
     else {
-      localStorage.setItem(orchestrion, "true")
+      localStorage.setItem(card, "true")
+    }
+  }
+
+  ownedSpell(spell: string): void {
+    let ownedSpell = localStorage.getItem(spell)
+
+    if (ownedSpell =="true") {
+      localStorage.setItem(spell, "false")
+      }
+    else {
+      localStorage.setItem(spell, "true")
     }
   }
 
@@ -86,6 +120,8 @@ export class CharacterDetailsComponent implements OnInit, OnDestroy {
     this.getMinions();
     this.getOrchestrions();
     this.getMounts();
+    this.getBlueMage();
+    this.getCard();
     this.getDungeons();
     setTimeout(() => {this.matchItems(this.dungeons);}, 2000);
   }
@@ -95,6 +131,13 @@ export class CharacterDetailsComponent implements OnInit, OnDestroy {
       .getCharDetails(id).subscribe((CharacterInfo: CharacterInfo) => {
         this.character = CharacterInfo;
         console.log(this.character);
+        let characterData = {
+          name: this.character.Character.Name,
+          orchestrions: [],
+          cards: null,
+          spells: null,
+        }
+        localStorage.setItem(characterData.name, JSON.stringify(characterData));
         this.characterCheck();
       })
   }
