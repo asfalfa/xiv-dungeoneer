@@ -120,6 +120,7 @@ export class HomeComponent implements OnInit, OnDestroy {
           return orchestrion.description.includes(`${dungeonName}.`);
         }
       });
+    
       let dungeonCards = (this.cards).filter((card: any) => {
         for ( let i = 0; i < card.sources.drops.length; i++) {
           if (card.sources.drops[i].includes(dungeonName)) {
@@ -134,6 +135,7 @@ export class HomeComponent implements OnInit, OnDestroy {
           }
         }
       });
+      
       let newItem: MatchedItem = {
         dungeon: this.dungeons[i],
       }
@@ -154,6 +156,7 @@ export class HomeComponent implements OnInit, OnDestroy {
       }
       this.dungeonInfo.push(newItem);
     }
+    console.log(this.dungeonInfo);
   }
 
   ngOnDestroy(): void {

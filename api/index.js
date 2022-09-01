@@ -115,6 +115,7 @@ app.get('/api/orchestrions', async(req,res) => {
             await orchestrionModel.create({
                 id: fetchedOrchestrions[i].id,
                 name: fetchedOrchestrions[i].name,
+                description: fetchedOrchestrions[i].description,
                 patch: fetchedOrchestrions[i].patch,
                 icon: fetchedOrchestrions[i].icon,
                 owned: fetchedOrchestrions[i].owned,

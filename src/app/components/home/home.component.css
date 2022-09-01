@@ -1,0 +1,15 @@
+.title-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-shadow: 1px 2px black;
+}
+.title-container {
+    position: relative;
+    text-align: center;
+    color: white;
+}
+.content-title{
+    font-size: 1.3em;
+}

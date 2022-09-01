@@ -4,37 +4,40 @@
 
     <div *ngIf="dungeon.minions">
     <mat-card>
-        <mat-card-title>{{dungeon.dungeon.name}}</mat-card-title>
+      <div class="title-container">
+        <mat-card-title class="title-text">{{dungeon.dungeon.name}}</mat-card-title>
+        <img class="title-img" src="{{dungeon.dungeon.banner}}" alt="{{dungeon.dungeon.name}}">
+      </div>
+      <mat-card-content>
+        <div *ngFor="let minion of dungeon.minions"> 
+            <mat-card class="owned" [class.owned]="minion.player_owns == true">
+            <mat-card-title class="content-title">{{minion.name}}</mat-card-title>
+            <img mat-card-sm-image matTooltip="{{minion.enhanced_description}}" matTooltipClass="minion_desc" src="{{minion.image}}" alt="{{minion.name}}">
             <mat-card-content>
-            <div *ngFor="let minion of dungeon.minions"> 
-                <mat-card class="owned" [class.owned]="minion.player_owns == true">
-                <mat-card-title>{{minion.name}}</mat-card-title>
-                <img mat-card-sm-image matTooltip="{{minion.enhanced_description}}" matTooltipClass="minion_desc" src="{{minion.image}}" alt="{{minion.name}}">
+              <p>{{minion.enhanced_description}}</p>
+            </mat-card-content>
+          </mat-card>
+        </div>
+
+        <div> 
+            <mat-card *ngFor="let orchestrionRoll of dungeon.orchestrions">
+            <input type="checkbox" id="{{orchestrionRoll.name}}" (click)="ownedOrchestrionRoll(orchestrionRoll.name)"> 
+            <mat-card-title class="content-title">{{orchestrionRoll.name}}</mat-card-title>
+            <img mat-card-sm-image matTooltip="{{orchestrionRoll.description}}" matTooltipClass="minion_desc" src="{{orchestrionRoll.icon}}" alt="{{orchestrionRoll.name}}">
+          </mat-card>
+        </div>
+
+        <div>
+            <mat-card *ngFor="let mount of dungeon.mounts">
+                <mat-card-title class="content-title">{{mount.name}}</mat-card-title>
+                <img mat-card-sm-image matTooltip="{{mount.enhanced_description}}" matTooltipClass="minion_desc" src="{{mount.image}}" alt="{{mount.name}}">
                 <mat-card-content>
-                  <p>{{minion.enhanced_description}}</p>
+                  <p>{{mount.enhanced_description}}</p>
                 </mat-card-content>
-              </mat-card>
-            </div>
-
-            <div> 
-                <mat-card *ngFor="let orchestrionRoll of dungeon.orchestrions">
-                <input type="checkbox" id="{{orchestrionRoll.name}}" (click)="ownedOrchestrionRoll(orchestrionRoll.name)"> 
-                <mat-card-title>{{orchestrionRoll.name}}</mat-card-title>
-                <img mat-card-sm-image matTooltip="{{orchestrionRoll.description}}" matTooltipClass="minion_desc" src="{{orchestrionRoll.icon}}" alt="{{orchestrionRoll.name}}">
-              </mat-card>
-            </div>
-
-            <div>
-                <mat-card *ngFor="let mount of dungeon.mounts">
-                    <mat-card-title>{{mount.name}}</mat-card-title>
-                    <img mat-card-sm-image matTooltip="{{mount.enhanced_description}}" matTooltipClass="minion_desc" src="{{mount.image}}" alt="{{mount.name}}">
-                    <mat-card-content>
-                      <p>{{mount.enhanced_description}}</p>
-                    </mat-card-content>
-                </mat-card>
-            
-            </div>
-             </mat-card-content>
+            </mat-card>
+        
+        </div>
+      </mat-card-content>
     </mat-card>
     </div>
 
