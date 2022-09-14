@@ -48,7 +48,7 @@ export class CharacterDetailsComponent implements OnInit, OnDestroy {
     } 
   }
   ownedOrchestrionRoll(orchestrion: string): void {
-    let characterData = localStorage.getItem(this.character.Character.Name)
+    let characterData = localStorage.getItem(this.character.name)
     if(characterData){
       let character = JSON.parse(characterData);
       if(character.orchestrions.includes(orchestrion)){
@@ -58,14 +58,14 @@ export class CharacterDetailsComponent implements OnInit, OnDestroy {
             foundOrchestrion: "false"
           }
           character.orchestrions.push(data)
-          localStorage.setItem(this.character.Character.Name,  JSON.stringify(character))
+          localStorage.setItem(this.character.name,  JSON.stringify(character))
           }
         else {
           let data = {
             foundOrchestrion: "true"
           }
           character.orchestrions.push(data)
-          localStorage.setItem(this.character.Character.Name,  JSON.stringify(character))
+          localStorage.setItem(this.character.name,  JSON.stringify(character))
         }
       }
     }
@@ -96,11 +96,9 @@ export class CharacterDetailsComponent implements OnInit, OnDestroy {
   displayLocalStorage(): void {
     const storage = { ...localStorage };
     const items = Object.entries(storage);
-    console.log(items);
 
     for (let i = 0; i < items.length; i++){
       let element = document.getElementById(items[i][0])
-      console.log(element)
       if (items[i][1] == "true") {
         if (element) {
           element.setAttribute("checked", "checked")
@@ -113,26 +111,27 @@ export class CharacterDetailsComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.routeSub = this.ActivatedRoute.params.subscribe((params: Params) => {
-      this.charId = params['id'];
-      this.getCharDetails(this.charId);
-    });
     this.getMinions();
     this.getOrchestrions();
     this.getMounts();
     this.getBlueMage();
     this.getCard();
     this.getDungeons();
-    setTimeout(() => {this.matchItems(this.dungeons);}, 2000);
+    setTimeout(() => {
+      this.matchItems(this.dungeons);
+      this.routeSub = this.ActivatedRoute.params.subscribe((params: Params) => {
+        this.charId = params['id'];
+        this.getCharDetails(this.charId);
+      });
+    }, 2000);
   }
 
   getCharDetails(id: number): void {
     this.charSub = this.httpService
       .getCharDetails(id).subscribe((CharacterInfo: CharacterInfo) => {
         this.character = CharacterInfo;
-        console.log(this.character);
         let characterData = {
-          name: this.character.Character.Name,
+          name: this.character.name,
           orchestrions: [],
           cards: null,
           spells: null,
@@ -167,7 +166,6 @@ export class CharacterDetailsComponent implements OnInit, OnDestroy {
     .getBlueMage()
     .subscribe((spellsList: Array<BlueMage>) => {
       this.spells = spellsList;
-      console.log(this.spells)
     })
   }
 
@@ -183,7 +181,6 @@ export class CharacterDetailsComponent implements OnInit, OnDestroy {
           }      
         }     
       });
-    console.log(this.cards)
     })
   }
 
@@ -256,20 +253,19 @@ export class CharacterDetailsComponent implements OnInit, OnDestroy {
       }
       this.dungeonInfo.push(newItem);
     }
-    console.log(this.dungeonInfo);
   }
 
   characterCheck(): void {
     for (let i = 0; i < this.minions.length; i++) {
-      for (let j = 0; j < this.character.Minions.length; j++){
-        if(this.character.Minions[j].Name == this.minions[i].name){
+      for (let j = 0; j < this.character.minions.length; j++){
+        if(this.character.minions[j].Name == this.minions[i].name){
           this.minions[i].player_owns = true;
         }
       }
     }
     for (let i = 0; i < this.mounts.length; i++) {
-      for (let j = 0; j < this.character.Mounts.length; j++){
-        if(this.character.Mounts[j].Name == this.mounts[i].name){
+      for (let j = 0; j < this.character.mounts.length; j++){
+        if(this.character.mounts[j].Name == this.mounts[i].name){
           this.mounts[i].player_owns = true;
         }
       }

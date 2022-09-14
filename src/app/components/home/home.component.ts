@@ -65,7 +65,6 @@ export class HomeComponent implements OnInit, OnDestroy {
     .getBlueMage()
     .subscribe((spellsList: Array<BlueMage>) => {
       this.spells = spellsList;
-      console.log(this.spells)
     })
   }
 
@@ -81,7 +80,6 @@ export class HomeComponent implements OnInit, OnDestroy {
           }      
         }     
       });
-    console.log(this.cards)
     })
   }
 
@@ -156,7 +154,6 @@ export class HomeComponent implements OnInit, OnDestroy {
       }
       this.dungeonInfo.push(newItem);
     }
-    console.log(this.dungeonInfo);
   }
 
   ngOnDestroy(): void {

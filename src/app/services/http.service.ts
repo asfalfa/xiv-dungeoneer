@@ -58,13 +58,10 @@ export class HttpService {
   }
 
   getCharDetails(id: number){
-    let params = new HttpParams();
-   
-    params = new HttpParams().set('data', 'AC,FR,FC,MIMO,PVP').set('extended', '1');
-
-    return this.http.get<CharacterInfo>(`${env.XIVAPI}/character/${id}`, {
-      params: params,
-    }); 
+    let data = {
+      characterId: id,
+    };
+    return this.http.post<any>(`${env.API}/character`, data);
   }
 
   getServers(){

@@ -27,7 +27,6 @@ export class BluemageComponent implements OnInit, OnDestroy {
     .getBlueMage()
     .subscribe((spellsList: Array<BlueMage>) => {
       this.spells = spellsList;
-      console.log(this.spells);
     })
   }
 

@@ -6,13 +6,17 @@ const app = express();
 const mongoose = require('mongoose');
 const cheerio = require('cheerio');
 const axios = require('axios');
+const {default: PQueue} = require('p-queue');
 
+const characterModel = require('./schemas/character');
 const minionModel = require('./schemas/minion');
 const mountModel = require('./schemas/mount');
 const orchestrionModel = require('./schemas/orchestrion');
 const dungeonModel = require('./schemas/dungeon');
 const spellModel = require('./schemas/spell');
 const cardModel = require('./schemas/card');
+
+const queue = new PQueue({concurrency: 1});
 
 let domain;
 try {
@@ -216,6 +220,38 @@ app.get('/api/dungeonInfo', async(req,res) => {
         res.json(dbDungeon);
     } else{
         res.json(dbDungeon);
+    }
+})
+
+// Character POST
+app.post('/api/character', async(req,res) => {
+    let dbCharacter = await characterModel.findOne({ id: req.body.characterId });
+    if(!dbCharacter){
+        await queue.add(async() => {
+            let response = await axios.get(`https://xivapi.com/character/${req.body.characterId}`, { params: { data: 'AC,FR,FC,MIMO,PVP', extended: 1 } });
+            let fetchedCharacter = response.data;
+            
+            await characterModel.create({
+                id: fetchedCharacter.Character.ID,
+                name: fetchedCharacter.Character.Name,
+                server: fetchedCharacter.Character.Description,
+                dc: fetchedCharacter.Character.DC,
+                avatar: fetchedCharacter.Character.Avatar,
+                portrait: fetchedCharacter.Character.Portrait,
+                freeCompany: fetchedCharacter.Character.FreeCompanyName,
+                minions: fetchedCharacter.Minions,
+                mounts: fetchedCharacter.Mounts,
+                orchestrions: null,
+                spells: null,
+                cards: null,
+            });
+
+            let dbCharacter = await characterModel.findOne({ id: req.body.characterId });
+            res.json(dbCharacter);
+        });
+        
+    }else{
+        res.json(dbCharacter);
     }
 })
 
