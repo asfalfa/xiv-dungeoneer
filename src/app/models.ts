@@ -117,9 +117,18 @@ export interface Card {
 }
 
 export interface CharacterInfo {
-    Character: CharacterDetails;
-    Minions: Array<XIVAPIMinion>;
-    Mounts: Array<XIVAPIMount>;
+    id: number,
+    name: string,
+    server: string,
+    dc: string,
+    avatar: string,
+    portrait: string,
+    freeCompany: string,
+    minions: [XIVAPIMinion],
+    mounts: [XIVAPIMount],
+    orchestrions: [Orchestrion],
+    spells: [BlueMage],
+    cards: [Card],
 }
 
 interface XIVAPIMinion {
