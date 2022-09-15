@@ -1,27 +1,34 @@
 
 
-<mat-toolbar class="toolbar font--righteous" role="banner">
-   <div class="font--righteous">
-    Hallo.
+<mat-toolbar class="toolbar" role="banner">
+   <div class="font--montserrat">
+        <a href="/" style="text-decoration: none; color: white;">
+            DUNGEONEER
+        </a>
    </div>
-    <form #form="ngForm" (ngSubmit)="onSubmit(form)"> 
-        <input
-            name="search"
-            placeholder="search for character"
-            ngModel
-        />
-
-        <select ngModel name="server">
-            <option *ngFor="let server of servers" value="{{server}}">{{server}}</option>
-
-
-        </select>
-
-        <button>
-        search
-        </button>
-
-    </form>
-    <a mat-flat-button href="/" color="primary" class="font--righteous">Home</a>
-    <a mat-flat-button href="/minions" color="primary" class="font--righteous">Minions</a>
+    <div class="search-wrapper">
+        <form class="search-form font--opensans" #form="ngForm" (ngSubmit)="onSubmit(form)"> 
+            <input
+                class="search-input"
+                name="search"
+                placeholder="Search for Character"
+                ngModel
+            />
+            <select class="search-select" ngModel name="server" >
+                <option value="" disabled selected hidden>Select your Server</option>
+                <option *ngFor="let server of servers" value="{{server}}">{{server}}</option>
+            </select>
+            <button class="search-btn font--opensans">
+                Search
+            </button>
+        </form>
+    </div>
+    <div class="menu-wrapper">
+        <a mat-flat-button href="/dungeons" class="menu-btn font--opensans">Dungeons</a>
+        <a mat-flat-button href="/minions" class="menu-btn font--opensans">Minions</a>
+        <a mat-flat-button href="/mounts" class="menu-btn font--opensans">Mounts</a>
+        <a mat-flat-button href="/orchestrions" class="menu-btn font--opensans">Orchestrions</a>
+        <a mat-flat-button href="/spells" class="menu-btn font--opensans">Blue Spells</a>
+        <a mat-flat-button href="/cards" class="menu-btn font--opensans">Triple Triad</a>
+    </div>
 </mat-toolbar>

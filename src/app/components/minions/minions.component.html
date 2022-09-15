@@ -1,5 +1,5 @@
 <div class="content">
-    <mat-card *ngFor="let minion of minions">
+    <mat-card *ngFor="let minion of minions" style="margin-bottom: 5px;">
       <mat-card-title>{{minion.name}}</mat-card-title>
       <img mat-card-sm-image matTooltip="{{minion.enhanced_description}}" matTooltipClass="minion_desc" src="{{minion.image}}" alt="{{minion.name}}">
       <mat-card-content>

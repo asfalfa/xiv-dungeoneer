@@ -1,1 +1,13 @@
-<p>cards works!</p>
+<div class="content">
+    <mat-card *ngFor="let card of cards" style="margin-bottom: 5px;">
+      <mat-card-title>{{card.name}}</mat-card-title>
+      <img mat-card-sm-image src="{{card.icon}}" alt="{{card.name}}">
+      <mat-card-content>
+        <p>Owned by {{card.owned}} of Players</p>
+        <p>{{card.description}}</p>
+        <p>Sources</p>
+        <p *ngFor="let drop of card.sources.drops">{{drop}}</p>
+        <p *ngIf="card.sources.purchase">{{card.sources.purchase}}</p>
+      </mat-card-content>
+    </mat-card>
+</div>

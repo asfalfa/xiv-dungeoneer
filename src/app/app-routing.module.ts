@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { BluemageComponent } from './components/bluemage/bluemage.component';
+import { CardsComponent } from './components/cards/cards.component';
 import { CharacterDetailsComponent } from './components/character-details/character-details.component';
 import { DungeonsComponent } from './components/dungeons/dungeons.component';
 import { HomeComponent } from './components/home/home.component';
@@ -36,6 +37,10 @@ const routes: Routes = [
   {
     path: 'dungeons',
     component: DungeonsComponent
+  },
+  {
+    path: 'cards',
+    component: CardsComponent
   },
   {
     path: 'spells',
