@@ -1,6 +1,33 @@
-<button (click)="hideOwnedMinions()">Hide Owned Minions</button>
+<mat-progress-bar style="width:100%" mode="indeterminate"></mat-progress-bar>
+<!-- the progressbar needs to wait for a emitter event of the pagebuild and then fade. -->
+
+<mat-card class="characterOptions">
+  Settings
+  <mat-card-subtitle>Missing collectables are displayed by default.</mat-card-subtitle>
+  <mat-card-actions>
+    <button  mat-button class="menu-btn font--opensans" (click)="hideOwnedMinions()">Hide Owned Minions</button> 
+    <button  mat-button class="menu-btn font--opensans" (click)="hideOwnedMinions()">Hide Owned Mounts</button> 
+    <button  mat-button class="menu-btn font--opensans" (click)="hideOwnedMinions()">Hide Owned Orchestrions</button> 
+    <button  mat-button class="menu-btn font--opensans" (click)="hideOwnedMinions()">Hide Owned BlueSpells</button> 
+    <button  mat-button class="menu-btn font--opensans" (click)="hideOwnedMinions()">Hide Owned Triple Triad</button>
+
+    <!-- This feels a bit hard formulated, i would use for true false state
+
+      hide (negative word)
+      owned (postive word)
+
+    shows all variable
+    show missing variable  -->
+
+    <button  mat-button class="menu-btn font--opensans" (click)="hideOwnedMinions()">Lore Mode</button> 
+
+    <button  mat-button class="menu-btn font--opensans" (click)="hideOwnedMinions()">Go Down</button> 
+    <button  mat-button class="menu-btn font--opensans" (click)="hideOwnedMinions()">Go Up</button> 
+
+  </mat-card-actions>
+</mat-card>
+
 <div *ngFor="let dungeon of dungeonInfo">
-    
 
     <div *ngIf="dungeon.minions">
     <mat-card style="margin-bottom: 5px;">
