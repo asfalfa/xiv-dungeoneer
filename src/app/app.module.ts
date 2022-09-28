@@ -21,6 +21,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { DungeonsComponent } from './components/dungeons/dungeons.component';
 import { BluemageComponent } from './components/bluemage/bluemage.component';
 import { CardsComponent } from './components/cards/cards.component';
+import { PaginationComponent } from './components/pagination/pagination.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { CardsComponent } from './components/cards/cards.component';
     NotFoundComponent,
     DungeonsComponent,
     BluemageComponent,
-    CardsComponent
+    CardsComponent,
+    PaginationComponent
   ],
   imports: [
     BrowserModule,

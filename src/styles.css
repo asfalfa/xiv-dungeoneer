@@ -17,8 +17,13 @@
     font-family: 'Open Sans', sans-serif !important;
   }
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { 
+  margin: 0; 
+  font-family: Roboto, "Helvetica Neue", sans-serif; 
+  background-color: #333;
+}
 .minion_desc{
 font-size: 1em;
 background: rgba(37, 39, 37, 0.932)
 }
+

@@ -1,5 +1,5 @@
 
-<div class="items">
+<mat-card style="margin-bottom: 5px;" class="items">
     <ng-container *ngFor="let character of characters">
         <div class="item" (click)="openDetails(character.ID)">
             <div class="item-thumb-container">
@@ -17,4 +17,7 @@
             </div>
         </div>
     </ng-container>
-</div>
+
+</mat-card>
+
+<app-pagination></app-pagination>

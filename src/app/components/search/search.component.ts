@@ -41,7 +41,9 @@ export class SearchComponent implements OnInit {
     this.itemSub = this.httpService
       .getCharacter(name, server)
       .subscribe((itemList: XIVAPIResponse<Character>) => {
+        console.log(itemList);
         this.characters = itemList.Results;
+        this.pagination = itemList.Pagination;
       });
   }
 }
