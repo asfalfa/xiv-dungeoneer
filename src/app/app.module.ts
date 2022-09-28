@@ -21,6 +21,10 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { DungeonsComponent } from './components/dungeons/dungeons.component';
 import { BluemageComponent } from './components/bluemage/bluemage.component';
 import { CardsComponent } from './components/cards/cards.component';
+import {MatIconModule} from '@angular/material/icon';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+
+
 
 @NgModule({
   declarations: [
@@ -46,7 +50,9 @@ import { CardsComponent } from './components/cards/cards.component';
     MatTooltipModule,
     MatAutocompleteModule,
     MatSelectModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatIconModule,
+    MatProgressBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

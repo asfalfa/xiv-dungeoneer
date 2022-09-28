@@ -1,24 +1,70 @@
 /* You can add global styles to this file, and also import other style files */
 @font-face {
-    font-family: Righteous;
-    src: url(./assets/Righteous-Regular.ttf) format("truetype");
-  }
+  font-family: Righteous;
+  src: url(./assets/Righteous-Regular.ttf) format("truetype");
+}
 
-  .font--righteous {
-    font-family: "Righteous", Sans-serif !important;
-  }
-  .font--roboto {
-    font-family: 'Roboto', sans-serif !important;
-  }
-  .font--montserrat {
-    font-family: 'Montserrat', sans-serif !important;
-  }
-  .font--opensans {
-    font-family: 'Open Sans', sans-serif !important;
-  }
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-.minion_desc{
-font-size: 1em;
-background: rgba(37, 39, 37, 0.932)
+.font--righteous {
+  font-family: "Righteous", Sans-serif !important;
+}
+
+.font--roboto {
+  font-family: 'Roboto', sans-serif !important;
+}
+
+.font--montserrat {
+  font-family: 'Montserrat', sans-serif !important;
+}
+
+.font--opensans {
+  font-family: 'Open Sans', sans-serif !important;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  background-color: #333;
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.minion_desc {
+  font-size: 1em;
+  background: rgba(37, 39, 37, 0.932)
+}
+
+/* Button Styling */
+
+.search-btn{
+  border: none;
+  outline: none;
+  background: #3f51b5;
+  color: #fff;
+  font-weight: 700;
+  transition-duration: 0.2s;
+  cursor: pointer;
+  padding: 10px;
+  border-left: 1px solid rgba(0,0,0,0.3);
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+.search-btn:hover{
+  background: #5564b6;
+}
+
+.menu-btn{
+  margin-left: 5px;
+  margin-right: 5px;
+  border-radius: 20px !important;
+  background-color: #4a4a4a;
+  transition-duration: 0.2s;   
+  padding: 10px;
+  color: #fff;
+
+}
+.menu-btn:hover{
+  background-color: #5c5c5c;
 }

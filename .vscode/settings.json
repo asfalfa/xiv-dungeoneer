@@ -2,6 +2,7 @@
     "conventionalCommits.scopes": [
         "API",
         "search scope",
-        "NG"
+        "NG",
+        "characterdetail-navbar"
     ]
 }

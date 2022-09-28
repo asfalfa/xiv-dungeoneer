@@ -1,0 +1,11 @@
+.items {
+  display: block;
+  width: 100%;
+  background-color: black;
+
+}
+
+.item{
+    min-width: 98vw;    
+  }
+  
