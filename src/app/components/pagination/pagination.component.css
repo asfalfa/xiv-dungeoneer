@@ -1,10 +1,10 @@
 .toolbar{
-        position: sticky;
-        position: -webkit-sticky; /* For macOS/iOS Safari */
-        bottom: 0; /* Sets the sticky toolbar to be on top */
-        z-index: 1000; /* Ensure that your app's content doesn't overlap the toolbar */
-        display: flex;
-        width: 100%;
+    position: sticky;
+    position: -webkit-sticky; /* For macOS/iOS Safari */
+    bottom: 0; /* Sets the sticky toolbar to be on top */
+    z-index: 1000; /* Ensure that your app's content doesn't overlap the toolbar */
+    display: flex;
+    width: 100%;
     box-sizing: border-box;
     padding: 0 16px;
     width: 100%;
@@ -12,7 +12,7 @@
     align-items: center;
     white-space: nowrap;
 }
-.bottom-menu-button-first{
+.bottom-menu-button{
     margin: 5px 5px 0px 5px;
     height: 40px;
     width: 60px;
@@ -25,92 +25,37 @@
     transition-duration: 0.3s;
     cursor: pointer;
 }
-    .bottom-menu-button-first:disabled{
+    .bottom-menu-button:disabled{
         transition-duration: 0s;
         cursor: default;
-        background-color: #151515;
-        color: #151515;
+        visibility: hidden;
     }
-    .bottom-menu-button-first:hover{
+    .bottom-menu-button:hover{
         transform: translateY(-3px);
     }
 
-.bottom-menu-button-second{
-    margin: 5px 5px 0px 5px;
-    height: 35px;
-    width: 50px;
-    border: none;
-    outline: none;
-    background: rgb(80, 80, 80);
+.bottom-menu-button-fourth:first{
+    left:0;
+}
+.bottom-menu-button-fourth:last-of-type{
+    right:0;
+}
+.bottom-menu-button-fourth:disabled{
+    transition-duration: 0s;
+    cursor: default;
+    visibility: hidden;
+}
+.bottom-menu-text{
+    margin-left: 20px;
+    margin-right: 20px;
     color: #fff;
     font-weight: 700;
-    font-size: 15px;
-    transition-duration: 0.3s;
-    cursor: pointer;
+    font-size: 20px;
+    margin-top: auto;
+    margin-bottom: auto;
 }
-    .bottom-menu-button-second:disabled{
-        transition-duration: 0s;
-        cursor: default;
-        background-color: #151515;
-        color: #151515;
-    }
-    .bottom-menu-button-second:hover{
-        transform: translateY(-3px);
-    }
-
-.bottom-menu-button-third{
-    margin: 5px 5px 0px 5px;
-    height: 30px;
-    width: 40px;
-    border: none;
-    outline: none;
-    background: rgb(80, 80, 80);
-    color: #fff;
-    font-weight: 700;
-    font-size: 15px;
-    transition-duration: 0.3s;
-    cursor: pointer;
+.bottom-menu-center{
+    display: flex;
+    margin: auto;
+    flex-direction: row;
 }
-    .bottom-menu-button-third:disabled{
-        transition-duration: 0s;
-        cursor: default;
-        background-color: #151515;
-        color: #151515;
-    }
-    .bottom-menu-button-third:hover{
-        transform: translateY(-3px);
-    }
-
-.bottom-menu-button-fourth{
-    margin: 5px 5px 0px 5px;
-    height: 30px;
-    width: 50px;
-    border: none;
-    outline: none;
-    background: rgb(80, 80, 80);
-    color: #fff;
-    font-weight: 700;
-    font-size: 15px;
-    transition-duration: 0.3s;
-    position: absolute;
-    cursor: pointer;
-}
-    .bottom-menu-button-fourth:disabled{
-        transition-duration: 0s;
-        cursor: default;
-        background-color: #151515;
-        color: #151515;
-    }
-    .bottom-menu-button-fourth:hover{
-        transform: translateY(-3px);
-    }
-
-    .bottom-menu-button-fourth-text{
-        margin-left: 20px;
-        margin-right: 20px;
-        color: #fff;
-        font-weight: 700;
-        font-size: 20px;
-        margin-top: auto;
-        margin-bottom: auto;
-    }

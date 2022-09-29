@@ -1,17 +1,15 @@
 <mat-toolbar class="toolbar" role="banner">
-        <button mat-flat-button style="left:200px;" class="bottom-menu-button-fourth" [disabled]="this.httpService.p <= 2" (click)="pageChangeFirst()">1</button>
-        <div>
-            <button mat-flat-button class="bottom-menu-button-third" [disabled]="this.httpService.p <= 11" (click)="pageChangeUpDown(-10)"><span> {{ this.httpService.p - 10 }} </span></button>
-            <button mat-flat-button class="bottom-menu-button-second" [disabled]="this.httpService.p <= 6" (click)="pageChangeUpDown(-5)"><span> {{ this.httpService.p - 5 }} </span></button>
-            <button mat-flat-button class="bottom-menu-button-first" [disabled]="this.httpService.p <= 1" (click)="pageChangePrevious()"><span> {{ this.httpService.p - 1 }} </span></button>
+        <button mat-flat-button class="bottom-menu-button-fourth" [disabled]="this.httpService.p <= 2" (click)="pageChangeFirst()">1</button>
+        <div class="bottom-menu-center">
+                <button mat-flat-button class="bottom-menu-button" [disabled]="this.httpService.p <= 11" (click)="pageChangeUpDown(-10)"><span> {{ this.httpService.p - 10 }} </span></button>
+                <button mat-flat-button class="bottom-menu-button" [disabled]="this.httpService.p <= 6" (click)="pageChangeUpDown(-5)"><span> {{ this.httpService.p - 5 }} </span></button>
+                <button mat-flat-button class="bottom-menu-button" [disabled]="this.httpService.p <= 1" (click)="pageChangePrevious()"><span> {{ this.httpService.p - 1 }} </span></button>
+            <p class="bottom-menu-text">{{this.httpService.p}}</p>
+                <button mat-flat-button class="bottom-menu-button" [disabled]="this.httpService.p == this.searchComponent.pagination.PageTotal" (click)="pageChangeNext()"><span> {{ this.httpService.p + 1 }} </span></button>
+                <button mat-flat-button class="bottom-menu-button" [disabled]="(this.httpService.p + 5) >= this.searchComponent.pagination.PageTotal" (click)="pageChangeUpDown(5)"><span> {{ this.httpService.p + 5 }} </span></button>
+                <button mat-flat-button class="bottom-menu-button" [disabled]="(this.httpService.p + 10) >= this.searchComponent.pagination.PageTotal" (click)="pageChangeUpDown(10)"><span> {{ this.httpService.p + 10 }} </span></button>
             
-        </div>
-        <p class="bottom-menu-text">{{this.httpService.p}}</p>
-        <div>
-            <button mat-flat-button class="bottom-menu-button-first" [disabled]="this.httpService.p == this.searchComponent.pagination.PageTotal" (click)="pageChangeNext()"><span> {{ this.httpService.p + 1 }} </span></button>
-            <button mat-flat-button class="bottom-menu-button-second" [disabled]="(this.httpService.p + 5) >= this.searchComponent.pagination.PageTotal" (click)="pageChangeUpDown(5)"><span> {{ this.httpService.p + 5 }} </span></button>
-            <button mat-flat-button class="bottom-menu-button-third" [disabled]="(this.httpService.p + 10) >= this.searchComponent.pagination.PageTotal" (click)="pageChangeUpDown(10)"><span> {{ this.httpService.p + 10 }} </span></button>
-        </div>
-        <button mat-flat-button style="right:200px;" class="bottom-menu-button-fourth" [disabled]="(this.httpService.p + 1) >= this.searchComponent.pagination.PageTotal" (click)="pageChangeLast(this.searchComponent.pagination.PageTotal)">{{ this.searchComponent.pagination.PageTotal }}</button>
+        </div>  
+        <button mat-flat-button class="bottom-menu-button-fourth" [disabled]="(this.httpService.p + 1) >= this.searchComponent.pagination.PageTotal" (click)="pageChangeLast(this.searchComponent.pagination.PageTotal)">{{ this.searchComponent.pagination.PageTotal }}</button>
 
 </mat-toolbar>

@@ -2,7 +2,6 @@
 <mat-card style="margin-bottom: 5px;" class="items">
     <ng-container *ngFor="let character of characters">
         <div class="item" (click)="openDetails(character.ID)">
-            <div class="item-thumb-container">
                 <img
                     *ngIf="character.Avatar"
                     class="item-thumbnail"
@@ -10,10 +9,10 @@
                     alt="thumbnail"
                 />
                 <p *ngIf="!character.Avatar">No image</p>
-            </div>
             <div class="item-description">
                 <p class="item-name">{{ character.Name }}</p>
-                <p class="item-name" style="font-size: 15px;">{{ character.Server }}</p>
+                <hr />
+                <p class="item-server" style="font-size: 15px;">{{ character.Server }}</p>
             </div>
         </div>
     </ng-container>
