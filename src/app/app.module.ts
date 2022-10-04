@@ -22,6 +22,8 @@ import { DungeonsComponent } from './components/dungeons/dungeons.component';
 import { BluemageComponent } from './components/bluemage/bluemage.component';
 import { CardsComponent } from './components/cards/cards.component';
 import { PaginationComponent } from './components/pagination/pagination.component';
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,9 @@ import { PaginationComponent } from './components/pagination/pagination.componen
     DungeonsComponent,
     BluemageComponent,
     CardsComponent,
-    PaginationComponent
+    PaginationComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

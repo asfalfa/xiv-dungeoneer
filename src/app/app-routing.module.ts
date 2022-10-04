@@ -5,8 +5,10 @@ import { CardsComponent } from './components/cards/cards.component';
 import { CharacterDetailsComponent } from './components/character-details/character-details.component';
 import { DungeonsComponent } from './components/dungeons/dungeons.component';
 import { HomeComponent } from './components/home/home.component';
+import { LoginComponent } from './components/login/login.component';
 import { MinionsComponent } from './components/minions/minions.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { RegisterComponent } from './components/register/register.component';
 import { SearchComponent } from './components/search/search.component';
 
 const routes: Routes = [
@@ -45,6 +47,14 @@ const routes: Routes = [
   {
     path: 'spells',
     component: BluemageComponent
+  },
+  {
+    path: 'register', 
+    component: RegisterComponent
+  },
+  {
+    path: 'login', 
+    component: LoginComponent
   }
 ];
 
