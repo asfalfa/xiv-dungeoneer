@@ -12,10 +12,6 @@ export class HttpService {
 
   constructor(private http: HttpClient) { }
 
-  test(): Observable<any> {
-    return this.http.get<any>(`/api/test`);
-  }
-
   getMinions(): Observable<Array<Minion>> {
     return this.http.get<Array<Minion>>(`${env.API}/minions`);
   }
