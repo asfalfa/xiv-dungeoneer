@@ -7,7 +7,9 @@ const mongoose = require('mongoose');
 const cheerio = require('cheerio');
 const axios = require('axios');
 const {default: PQueue} = require('p-queue');
+const sha512 = require('js-sha512');
 
+const userModel = require('./schemas/user');
 const characterModel = require('./schemas/character');
 const minionModel = require('./schemas/minion');
 const mountModel = require('./schemas/mount');
@@ -252,6 +254,46 @@ app.post('/api/character', async(req,res) => {
         
     }else{
         res.json(dbCharacter);
+    }
+})
+
+// Register
+app.post('/api/signup', async(req,res) => {
+    let dbUser = await userModel.findOne({ email: req.body.email });
+    if(!dbUser){
+        let accessToken = sha512('');
+        await userModel.create({
+            username: req.body.username,
+            email: req.body.email,
+            password: req.body.password,
+            accessToken: accessToken,
+        });
+        res.json(dbUser);
+    }else{
+        res.json(false);
+    }
+})
+
+// Log In
+app.post('/api/signin', async(req,res) => {
+    let dbUser = await userModel.findOne({ email: req.body.email });
+    if(!dbUser){
+        res.json(false);
+    }else{
+        let accessToken = sha512('');
+        dbUser.accessToken = accessToken;
+        await dbUser.save();
+        res.json(dbUser);
+    }
+})
+
+// Log In
+app.post('/api/usercheck', async(req,res) => {
+    let dbUser = await userModel.findOne({ accessToken: req.body.accessToken });
+    if(!dbUser){
+        res.json(false);
+    }else{
+        res.json(dbUser);
     }
 })
 
